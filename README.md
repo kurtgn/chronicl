@@ -15,3 +15,7 @@ Dependencies:
 - requests
 - matplotlib
 - base64, math, sys, re, datetime
+
+
+
+This has been tested on a single paid account with no collaborators. I am not sure how it will work in multi-user workspaces.
