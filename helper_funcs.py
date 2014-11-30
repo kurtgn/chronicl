@@ -83,7 +83,7 @@ i=0
 
 def all_project_hours(data,client_name):
     global i
-    #pdb.set_trace()
+
     hours=[0]*len(data[0]['weekly_hours'])
 
     for item in data:

@@ -1,11 +1,9 @@
-import requests
 import base64
 import sys
-from datetime import datetime,timedelta
-
+from datetime import datetime
 from helper_funcs import *
 import re
-import pdb
+
 
 if len(sys.argv)!=4:
     print "\nEnter 3 command line arguments: start date, end date, and user token."
@@ -28,7 +26,7 @@ except ValueError:
 mondays=get_download_dates(startdate,enddate)
 
 usertoken=sys.argv[3]
-#usertoken='0853c89724897fd187717c5798543975'
+
 
 string=usertoken+':api_token'
 headers={'Authorization':'Basic '+base64.b64encode(string)}
@@ -44,10 +42,10 @@ email=response['data']['email']
 workspace_ids_names=[{'name':item['name'],'id':item['id']} for item in response['data']['workspaces'] if item['admin']==True]
 
 if len(workspace_ids_names)>1:
-    print "There are more than 1 workspace with user as admin:"
+    print "\nThere are more than 1 workspace with user as admin:"
     for w in workspace_ids_names:
         print workspace_ids_names.index(w),":",w['name']
-    print "Which workspace do you want graphed?"
+    print "\nWhich workspace do you want graphed?"
     try:
         wnum = int(raw_input("Enter 0,1,2 etc.: "))
         first_workspace_id=workspace_ids_names[wnum]['id']
@@ -93,7 +91,7 @@ clients.append(noclient)
 client_project_list=[]
 for client in clients:
     for project in client['projects']:
-        #pdb.set_trace()
+
         client_project_list.append({'client_id':client['id'],'project_id':project['id'],
                                     'client_name':client['name'],'project_name':project['name'],
                                     'weekly_hours':[],'color':colordict[int(project['color'])]})
