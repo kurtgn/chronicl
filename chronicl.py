@@ -57,6 +57,11 @@ if len(workspace_ids_names)>1:
         print 'Wrong input: you dont have workspace with this number.'
         quit()
 
+if len(workspace_ids_names)==1:
+    print "Only have 1 workspace"
+    print "workspace name: ",workspace_ids_names[0]['name']
+    first_workspace_id=workspace_ids_names[0]['id']
+    quit()
 
 if len(workspace_ids_names)==0:
     print "There are no workspaces where user is admin. Quitting"
